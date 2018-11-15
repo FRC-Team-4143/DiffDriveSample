@@ -67,7 +67,11 @@ void Robot::RobotInit() {
 }
 
 void Robot::RobotPeriodic() {
-	;
+	SmartDashboard::PutNumber("Front Right Slave Motor", RobotMap::driveTrainFrontRightDriveSlave->GetSelectedSensorPosition());
+	SmartDashboard::PutNumber("Front Right Drive Motor", RobotMap::driveTrainFrontRightDrive->GetSelectedSensorPosition());
+	SmartDashboard::PutNumber("Rear Left Slave Motor", RobotMap::driveTrainRearLeftDriveSlave->GetSelectedSensorPosition());
+	SmartDashboard::PutNumber("Rear Left Drive Motor", RobotMap::driveTrainRearLeftDrive->GetSelectedSensorPosition());
+
 }
 
 void Robot::DisabledInit() {

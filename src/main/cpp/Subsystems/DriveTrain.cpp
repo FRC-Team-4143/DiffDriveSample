@@ -156,6 +156,19 @@ void DriveTrain::PositionModeTwist(float desiredangle) {
 
 // ==========================================================================
 
+void DriveTrain::TestDriveEncoderZero(){
+	RobotMap::driveTrainRearLeftDrive->SetSelectedSensorPosition(0, 0, 10);
+	RobotMap::driveTrainRearLeftDriveSlave->SetSelectedSensorPosition(0, 0, 10);
+}
+
+//===========================================================================
+
+void DriveTrain::TestDriveEnable(){
+	RobotMap::driveTrainFrontLeftDriveSlave->Follow(RobotMap::driveTrainFrontLeftDriveSlave, FollowerType_AuxOutput1);
+}
+
+//===========================================================================
+
 // keeps controls consistent regardless of rotation of robot
 void DriveTrain::FieldCentricCrab(float twist, float y, float x,
 		bool operatorControl) {
@@ -540,10 +553,10 @@ void DriveTrain::setWheelOffsets() {
 	 auto RRPosition = Robot::driveTrain->rearRightPos->GetRawAngle();
 	 auto ArmPosition = Robot::armSub->GetRawPosition();
 	 */
-	auto FLPosition = AnalogScale(frontLeftSensor->GetVoltage());
-	auto FRPosition = AnalogScale(frontRightSensor->GetVoltage());
-	auto RLPosition = AnalogScale(rearLeftSensor->GetVoltage());
-	auto RRPosition = AnalogScale(rearRightSensor->GetVoltage());
+	auto FLPosition = 0.;//(-2.5 + AnalogScale(frontLeftSensor->GetVoltage()));
+	auto FRPosition = 0.;//(-2.5 + AnalogScale(frontRightSensor->GetVoltage()));
+	auto RLPosition = 0.;//(-2.5 + AnalogScale(rearLeftSensor->GetVoltage()));
+	auto RRPosition = 0.;//(-2.5 + AnalogScale(rearRightSensor->GetVoltage()));
 	LogSettings(FLPosition, FRPosition, RLPosition, RRPosition);
 
 	// Save the positions to Preferences.

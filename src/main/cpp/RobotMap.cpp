@@ -101,7 +101,7 @@ void RobotMap::Initialize() {
 	////////////////////////////////////
 	//Drive Motor
 	driveTrainFrontLeftDrive = new WPI_TalonSRX(FLD);
-	driveTrainFrontLeftDrive->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative,0,10);
+	driveTrainFrontLeftDrive->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder,0,10);
 	driveTrainFrontLeftDrive->ConfigPeakOutputForward(1,10);
 	driveTrainFrontLeftDrive->ConfigPeakOutputReverse(-1,10);
 	driveTrainFrontLeftDrive->Config_kP(0,driveP,10);
@@ -118,7 +118,7 @@ void RobotMap::Initialize() {
 
 	//Drive Motor Slave
 	driveTrainFrontLeftDriveSlave = new WPI_TalonSRX(FLDS);
-	driveTrainFrontLeftDriveSlave->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative,0,10);
+	driveTrainFrontLeftDriveSlave->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder,0,10);
 	driveTrainFrontLeftDriveSlave->ConfigPeakOutputForward(1,10);
 	driveTrainFrontLeftDriveSlave->ConfigPeakOutputReverse(-1,10);
 	driveTrainFrontLeftDriveSlave->Config_kP(0,driveP,10);
@@ -154,7 +154,7 @@ void RobotMap::Initialize() {
 	////////////////////////////////////
 	//Driving Motor
 	driveTrainFrontRightDrive = new WPI_TalonSRX(FRD);
-	driveTrainFrontRightDrive->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative,0,10);
+	driveTrainFrontRightDrive->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder,0,10);
 	driveTrainFrontRightDrive->ConfigPeakOutputForward(1,10);
 	driveTrainFrontRightDrive->ConfigPeakOutputReverse(-1,10);
 	driveTrainFrontRightDrive->Config_kP(0,driveP,10);
@@ -173,7 +173,7 @@ void RobotMap::Initialize() {
 
 	//Slave Motor
 	driveTrainFrontRightDriveSlave = new WPI_TalonSRX(FRDS);
-	driveTrainFrontRightDriveSlave->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative,0,10);
+	driveTrainFrontRightDriveSlave->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder,0,10);
 	driveTrainFrontRightDriveSlave->ConfigPeakOutputForward(1,10);
 	driveTrainFrontRightDriveSlave->ConfigPeakOutputReverse(-1,10);
 	driveTrainFrontRightDriveSlave->Config_kP(0,driveP,10);
@@ -211,13 +211,14 @@ void RobotMap::Initialize() {
 	////////////////////////////////////
 	//Driving Motor
 	driveTrainRearLeftDrive = new WPI_TalonSRX(RLD);
-	driveTrainRearLeftDrive->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative,0,10);
+	driveTrainRearLeftDrive->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder,0,10);
 	driveTrainRearLeftDrive->ConfigPeakOutputForward(1,10);
 	driveTrainRearLeftDrive->ConfigPeakOutputReverse(-1,10);
 	driveTrainRearLeftDrive->Config_kP(0,driveP,10);
 	driveTrainRearLeftDrive->Config_kI(0,driveI,10);
 	driveTrainRearLeftDrive->Config_kD(0,driveD,10);
 	driveTrainRearLeftDrive->Config_kF(0,driveF+.00,10);  //  take out .05 for comp bot
+	driveTrainRearLeftDrive->SetInverted(false);
 	driveTrainRearLeftDrive->SetSensorPhase(false);
 	driveTrainRearLeftDrive->SelectProfileSlot(0,0);
 	driveTrainRearLeftDrive->Config_kP(1,pdriveP,10);
@@ -230,13 +231,17 @@ void RobotMap::Initialize() {
 
 	//Slave Motor
 	driveTrainRearLeftDriveSlave = new WPI_TalonSRX(RLDS);
-	driveTrainRearLeftDriveSlave->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative,0,10);
+	driveTrainRearLeftDriveSlave->ConfigRemoteFeedbackFilter(driveTrainRearLeftDrive->GetDeviceID(), RemoteSensorSource::RemoteSensorSource_TalonSRX_SelectedSensor, 0, 10);
+	driveTrainRearLeftDriveSlave->ConfigSensorTerm(SensorTerm::SensorTerm_Sum0, FeedbackDevice::RemoteSensor0, 10);
+	driveTrainRearLeftDriveSlave->ConfigSensorTerm(SensorTerm::SensorTerm_Sum1, FeedbackDevice::QuadEncoder, 10);
+	driveTrainRearLeftDriveSlave->ConfigSelectedFeedbackSensor(FeedbackDevice::SensorSum, 0, 10);
 	driveTrainRearLeftDriveSlave->ConfigPeakOutputForward(1,10);
 	driveTrainRearLeftDriveSlave->ConfigPeakOutputReverse(-1,10);
 	driveTrainRearLeftDriveSlave->Config_kP(0,driveP,10);
 	driveTrainRearLeftDriveSlave->Config_kI(0,driveI,10);
 	driveTrainRearLeftDriveSlave->Config_kD(0,driveD,10);
 	driveTrainRearLeftDriveSlave->Config_kF(0,driveF+.00,10);  //  take out .05 for comp bot
+	driveTrainRearLeftDriveSlave->SetInverted(false);
 	driveTrainRearLeftDriveSlave->SetSensorPhase(false);
 	driveTrainRearLeftDriveSlave->SelectProfileSlot(0,0);
 	driveTrainRearLeftDriveSlave->Config_kP(1,pdriveP,10);
@@ -244,8 +249,8 @@ void RobotMap::Initialize() {
 	driveTrainRearLeftDriveSlave->Config_IntegralZone(1,pdriveIZone,10);
 	driveTrainRearLeftDriveSlave->Config_kD(1,pdriveD,10);
 	driveTrainRearLeftDriveSlave->Config_kF(1,pdriveF,10);
-	//driveTrainRearLeftDrive->ConfigMotionCruiseVelocity(3500, 10);
-	//driveTrainRearLeftDrive->ConfigMotionAcceleration(2000, 10);
+	driveTrainRearLeftDrive->ConfigMotionCruiseVelocity(3500, 10);
+	driveTrainRearLeftDrive->ConfigMotionAcceleration(2000, 10);
 
 	//Steering Motor
 	driveTrainRearLeftSteer = new WPI_TalonSRX(RLS);

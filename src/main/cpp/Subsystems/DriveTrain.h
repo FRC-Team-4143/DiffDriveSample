@@ -96,6 +96,8 @@ public:
 	void SideLock(); // locks steering
 	bool unwind();     // float y, float x); //unwinds all wheels
 	void doneunwind(); // called when unwinding is finished
+	void TestDriveEncoderZero();
+	void TestDriveEnable();
 	void GyroCrab(float desiredangle, float y, float x, bool operatorControl); // drive using gyro values
 	void GyroRotate(float desiredangle, double power);
 	void FieldCentricCrab(float twist, float y, float x, bool operatorControl); // drive at 90 degree angle to field
