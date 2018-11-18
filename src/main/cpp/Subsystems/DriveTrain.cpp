@@ -164,7 +164,8 @@ void DriveTrain::TestDriveEncoderZero(){
 //===========================================================================
 
 void DriveTrain::TestDriveEnable(){
-	RobotMap::driveTrainFrontLeftDriveSlave->Follow(RobotMap::driveTrainFrontLeftDriveSlave, FollowerType_AuxOutput1);
+	rearLeftDriveSlave->Set(ControlMode::MotionMagic, 0, 0);
+	//rearLeftDrive->Follow(rearLeftDriveSlave, FollowerType::FollowerType_AuxOutput1);
 }
 
 //===========================================================================

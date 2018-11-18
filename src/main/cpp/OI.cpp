@@ -32,6 +32,7 @@
 #include "Commands/GearLineup.h"
 #include "Commands/CalculateSpeed.h"
 #include "Commands/BoilerLineup.h"
+#include "Commands/TestDrive.h"
 #include "Robot.h"
 
 const uint32_t JOYSTICK_LX_AXIS = 0;
@@ -84,10 +85,12 @@ OI::OI() {
 	gearLineup = new GearLineup();
 	calculateSpeed = new CalculateSpeed();
 	boilerLineup = new BoilerLineup();
+	testDrive = new TestDrive();
 	auto cameraEnableCmd = new BasicCameraEnableCmd(Robot::basicCameraSub);
 
+	(new JoystickButton(driverJoystick, JOYSTICK_BUTTON_A))->WhileHeld(testDrive);
 
-////Main Driver Controller///----------------------------------------------------------------
+/* ////Main Driver Controller///----------------------------------------------------------------
 	(new JoystickButton(driverJoystick, JOYSTICK_BUTTON_LB))->WhileHeld(gyroCrab);
 	(new JoystickButton(driverJoystick, JOYSTICK_BUTTON_RB))->WhileHeld(fieldCentric);
 
@@ -125,7 +128,7 @@ OI::OI() {
 
 	//auto shooterFasterButton2 = new frc::JoystickButton(driverJoystick2, JOYSTICK_BUTTON_3);
 	//shooterFasterButton2->WhenPressed(cmdShooterFaster);
-////-----------------------------------------------------------------------------------------
+ */ ///-----------------------------------------------------------------------------------------
 
 	SmartDashboard::PutData("Camera On", cameraEnableCmd);
 
