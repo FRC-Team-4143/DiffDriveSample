@@ -165,7 +165,8 @@ void DriveTrain::TestDriveEncoderZero(){
 
 void DriveTrain::TestDriveEnable(){
 	rearLeftDriveSlave->Set(ControlMode::MotionMagic, 0, 0);
-	//rearLeftDrive->Follow(rearLeftDriveSlave, FollowerType::FollowerType_AuxOutput1);
+	((TalonSRX*)rearLeftDrive)->Follow((ctre::phoenix::motorcontrol::IMotorController&) rearLeftDrive, FollowerType::FollowerType_AuxOutput1);
+	//rearLeftDrive->Follow(rearLeftDrive, FollowerType_AuxOutput1);
 }
 
 //===========================================================================
@@ -468,24 +469,24 @@ void DriveTrain::SetDriveSpeed(float FLSpeed, float FRSpeed, float RLSpeed,
 		frontLeftDrive->Set(FLSpeed * FLInv * driveScale);
 		frontRightDrive->Set(FRSpeed * FRInv * driveScale);
 		SmartDashboard::PutNumber("Front Right Drive", (FRSpeed * FRInv * driveScale));
-		rearLeftDrive->Set(RLSpeed * RLInv * driveScale);
+		rearLeftDrive->Set(ControlMode::PercentOutput, RLSpeed * RLInv * driveScale);
 		rearRightDrive->Set(RRSpeed * RRInv * driveScale);
 		frontLeftDriveSlave->Set(FLSpeed * -FLInv * driveScale);
 		frontRightDriveSlave->Set(FRSpeed * -FRInv * driveScale);
 		SmartDashboard::PutNumber("Front Right Slave", (FRSpeed * -FRInv * driveScale));
-		rearLeftDriveSlave->Set(RLSpeed * -RLInv * driveScale);
+		rearLeftDriveSlave->Set(ControlMode::PercentOutput, RLSpeed * -RLInv * driveScale);
 		rearRightDriveSlave->Set(RRSpeed * -RRInv * driveScale);
 	} else {
 		frontLeftDrive->Set((FLSpeed * FLInv) - flsdiff);
 		frontRightDrive->Set((FRSpeed * FRInv) - frsdiff);
 		SmartDashboard::PutNumber("Front Right Drive", ((FRSpeed * FRInv) - frsdiff));
-		rearLeftDrive->Set((RLSpeed * RLInv) - rlsdiff);
+		rearLeftDrive->Set(ControlMode::PercentOutput, (RLSpeed * RLInv) - rlsdiff);
 		SmartDashboard::PutNumber("Rear Left Drive", ((RLSpeed * RLInv) - rlsdiff));
 		rearRightDrive->Set((RRSpeed * RRInv) - rrsdiff);
 		frontLeftDriveSlave->Set((FLSpeed * -FLInv) - flsdiff);
 		frontRightDriveSlave->Set((FRSpeed * -FRInv) - frsdiff);
 		SmartDashboard::PutNumber("Front Right Slave", ((FRSpeed * -FRInv) - frsdiff));
-		rearLeftDriveSlave->Set((RLSpeed * -RLInv) - rlsdiff);
+		rearLeftDriveSlave->Set(ControlMode::PercentOutput, (RLSpeed * -RLInv) - rlsdiff);
 		SmartDashboard::PutNumber("Rear Left Slave", ((RLSpeed * -RLInv) - rlsdiff));
 		rearRightDriveSlave->Set((RRSpeed * -RRInv) - rrsdiff);
 	}
