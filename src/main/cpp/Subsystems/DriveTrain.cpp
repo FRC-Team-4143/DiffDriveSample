@@ -14,8 +14,8 @@
 #define SOFTTURNLIMIT 2
 #endif
 
-const float DIFFSCALE = 0.4; // must tune still
-const float DIFFMAX = 0.24;
+const float DIFFSCALE = 0.3; // must tune still
+const float DIFFMAX = 0.15;
 const float DIFFMIN = 0.001;
 const float DIFFDEAD = 0.001;
 
@@ -411,20 +411,17 @@ void DriveTrain::SetSteer(float FLSetPoint, float FRSetPoint,
 }
 
 // ==========================================================================
+void DriveTrain::GetDiffSensorValues(){
+	
+	flsensorval = AnalogScale(frontLeftSensor->GetVoltage());
+	frsensorval = AnalogScale(frontRightSensor->GetVoltage());
+	rlsensorval = AnalogScale(rearLeftSensor->GetVoltage());
+	rrsensorval = AnalogScale(rearRightSensor->GetVoltage());
+}
 
+// ===========================================================================
 void DriveTrain::SetDriveSpeed(float FLSpeed, float FRSpeed, float RLSpeed,
 		float RRSpeed) {
-
-	double flsensorval = AnalogScale(frontLeftSensor->GetVoltage());
-	double frsensorval = AnalogScale(frontRightSensor->GetVoltage());
-	double rlsensorval = AnalogScale(rearLeftSensor->GetVoltage());
-	double rrsensorval = AnalogScale(rearRightSensor->GetVoltage());
-
-	SmartDashboard::PutNumber("Front Left Sensor", flsensorval);
-	SmartDashboard::PutNumber("Front Right Sensor", frsensorval);
-	SmartDashboard::PutNumber("Rear Left Sensor", rlsensorval);
-	SmartDashboard::PutNumber("Rear Right Sensor", rrsensorval);
-
 
 	flsdiff = (FLSetpointValue - flsensorval);
 	frsdiff = (FRSetpointValue - frsensorval);

@@ -72,7 +72,7 @@ private:
 
 	frc::I2C* lidar;
 
-    double AnalogScale(double input);
+    
 	double CorrectSteerSetpoint(double setpoint, WPI_TalonSRX* talon);
 	void SetSteer(float FLSetPoint, float FRSetPoint, float RLSetPoint, float RRSetPoint);
 	float SetSteerSetpoint(float setpoint, WPI_TalonSRX* talon, double *inverse, AnalogInput* sensor);
@@ -82,6 +82,15 @@ private:
 
 public:
 	DriveTrain();
+
+	double AnalogScale(double input);
+
+	void GetDiffSensorValues();
+
+	double flsensorval;
+	double frsensorval;
+	double rlsensorval;
+	double rrsensorval;
 
 	void readLidar();
 	unsigned long lidarDistance;

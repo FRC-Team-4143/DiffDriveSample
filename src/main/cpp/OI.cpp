@@ -89,6 +89,7 @@ OI::OI() {
 	auto cameraEnableCmd = new BasicCameraEnableCmd(Robot::basicCameraSub);
 
 	(new JoystickButton(driverJoystick, JOYSTICK_BUTTON_A))->WhileHeld(testDrive);
+	(new JoystickButton(driverJoystick, JOYSTICK_BUTTON_X))->WhileHeld(fieldCentric);
 
 /* ////Main Driver Controller///----------------------------------------------------------------
 	(new JoystickButton(driverJoystick, JOYSTICK_BUTTON_LB))->WhileHeld(gyroCrab);

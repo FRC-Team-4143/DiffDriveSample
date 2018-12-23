@@ -67,6 +67,15 @@ void Robot::RobotInit() {
 }
 
 void Robot::RobotPeriodic() {
+	
+	driveTrain->GetDiffSensorValues();
+
+	SmartDashboard::PutNumber("Front Left Sensor", driveTrain->flsensorval);
+	SmartDashboard::PutNumber("Front Right Sensor", driveTrain->frsensorval);
+	SmartDashboard::PutNumber("Rear Left Sensor", driveTrain->rlsensorval);
+	SmartDashboard::PutNumber("Rear Right Sensor", driveTrain->rrsensorval);
+
+
 	SmartDashboard::PutNumber("Front Right Slave Motor", RobotMap::driveTrainFrontRightDriveSlave->GetSelectedSensorPosition());
 	SmartDashboard::PutNumber("Front Right Drive Motor", RobotMap::driveTrainFrontRightDrive->GetSelectedSensorPosition());
 	SmartDashboard::PutNumber("Rear Left Slave Motor", RobotMap::driveTrainRearLeftDriveSlave->GetSelectedSensorPosition());
@@ -88,6 +97,18 @@ void Robot::DisabledPeriodic() {
 	Scheduler::GetInstance()->Run();
 	//driveTrain->Dashboard();
 	SmartDashboard::PutNumber("Gyro Yaw", RobotMap::imu->GetYaw());
+
+/*	SmartDashboard::PutNumber("Front Left Sensor", driveTrain->flsensorval);
+	SmartDashboard::PutNumber("Front Right Sensor", driveTrain->frsensorval);
+	SmartDashboard::PutNumber("Rear Left Sensor", driveTrain->rlsensorval);
+	SmartDashboard::PutNumber("Rear Right Sensor", driveTrain->rrsensorval);
+
+
+	SmartDashboard::PutNumber("Front Right Slave Motor", RobotMap::driveTrainFrontRightDriveSlave->GetSelectedSensorPosition());
+	SmartDashboard::PutNumber("Front Right Drive Motor", RobotMap::driveTrainFrontRightDrive->GetSelectedSensorPosition());
+	SmartDashboard::PutNumber("Rear Left Slave Motor", RobotMap::driveTrainRearLeftDriveSlave->GetSelectedSensorPosition());
+	SmartDashboard::PutNumber("Rear Left Drive Motor", RobotMap::driveTrainRearLeftDrive->GetSelectedSensorPosition());
+*/
 	//indexer->ReadPDP();
 
 	//SmartDashboard::PutNumber("Sonar", RobotMap::sonar->GetAverageVoltage());
