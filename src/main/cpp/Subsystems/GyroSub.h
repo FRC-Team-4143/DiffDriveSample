@@ -5,10 +5,10 @@
 // FRC 4143: MARS/WARS
 // ==========================================================================
 #pragma once
-#include "WPILib.h"
+#include <frc/WPILib.h>
 using namespace frc;
-#include <Commands/Subsystem.h>
-#include <PIDSource.h>
+#include <frc/commands/Subsystem.h>
+#include <frc/PidSource.h>
 #include <AHRS.h>
 
 class GyroSub : public frc::Subsystem, public frc::PIDSource {

@@ -1,5 +1,5 @@
 #include "RobotMap.h"
-#include <LiveWindow/LiveWindow.h>
+#include <frc/LiveWindow/LiveWindow.h>
 
 bool RobotMap::SpeedControl = 0;
 
@@ -86,7 +86,8 @@ AHRS* RobotMap::imu = nullptr;
 #define RRS 4
 
 void RobotMap::Initialize() {
-	// LiveWindow* lw = LiveWindow::GetInstance();
+	LiveWindow* lw = LiveWindow::GetInstance();
+	lw->DisableAllTelemetry();
 
 	//serialPort = new SerialPort(9600, SerialPort::kUSB);
 	//serialPort1 = new SerialPort(9600, SerialPort::kUSB1);

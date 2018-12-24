@@ -8,8 +8,8 @@
 #pragma once
 
 #include <string>
-#include "frc/WPILib.h"
-#include <Commands/Command.h>
+#include <frc/WPILib.h>
+#include <frc/commands/Command.h>
 template class std::basic_string<char>;  //RJS not sure why
 
 // ==========================================================================

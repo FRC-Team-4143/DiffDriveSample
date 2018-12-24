@@ -220,7 +220,7 @@ void DriveTrain::GyroRotate(float desiredangle, double power) {
 // ==========================================================================
 
 void DriveTrain::Crab(float twist, float y, float x, bool operatorControl) {
-	LOG("DriveTrain::Crab1");
+	//LOG("DriveTrain::Crab1");
 	// stop PID loop if wires wrap.
 	/*
 	 if (unwinding || abs(frontRightPos->GetTurns()) > MAXTURNS ||
@@ -292,10 +292,10 @@ void DriveTrain::Crab(float twist, float y, float x, bool operatorControl) {
 		RRSetPoint = (EncoderConstants::HALF_TURN
 				+ EncoderConstants::HALF_TURN / pi * atan2(AP, CP));
 	}
-	LOG("DriveTrain::Crab2");
+	//LOG("DriveTrain::Crab2");
 
 	SetSteer(FLSetPoint, FRSetPoint, RLSetPoint, RRSetPoint);
-	LOG("DriveTrain::Crab3");
+	//LOG("DriveTrain::Crab3");
 
 	double FL; // FL, distance from Front Left Wheel to the center of rotation
 	double FR; // FR, distance from Front Right Wheel to the center of rotation
@@ -343,11 +343,11 @@ void DriveTrain::Crab(float twist, float y, float x, bool operatorControl) {
 		RLRatio = 0.0;
 		RRRatio = 0.0;
 	}
-	LOG("DriveTrain::Crab4");
+	//LOG("DriveTrain::Crab4");
 
 	// Set drive speeds
 	SetDriveSpeed(FLRatio, -FRRatio, RLRatio, -RRRatio);
-	LOG("DriveTrain::Crab5");
+	//LOG("DriveTrain::Crab5");
 }
 
 // ==========================================================================
@@ -444,9 +444,9 @@ void DriveTrain::SetDriveSpeed(float FLSpeed, float FRSpeed, float RLSpeed,
 	rrsdiff *= -DIFFSCALE;
 
 
-	char sz[256];
-	sprintf(sz, "diffs: FL %f, FR %f, RL %f, RR %f", flsdiff, frsdiff, rlsdiff, rrsdiff);
-	LOG(sz);
+	//char sz[256];
+	//sprintf(sz, "diffs: FL %f, FR %f, RL %f, RR %f", flsdiff, frsdiff, rlsdiff, rrsdiff);
+	//LOG(sz);
 
 	if(flsdiff > DIFFDEAD) flsdiff += DIFFMIN;
 	if(flsdiff < -DIFFDEAD) flsdiff -= DIFFMIN;

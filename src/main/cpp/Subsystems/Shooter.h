@@ -1,7 +1,7 @@
 #pragma once
-#include "frc/WPILib.h"
+#include <frc/WPILib.h>
 using namespace frc;
-#include "Commands/Subsystem.h"
+#include <frc/commands/Subsystem.h>
 #include "ctre/Phoenix.h"
 
 class Shooter: public Subsystem {

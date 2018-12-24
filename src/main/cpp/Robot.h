@@ -1,8 +1,8 @@
 #pragma once
 
 #include <frc/WPILib.h>
-#include <Commands/Command.h>
-#include <LiveWindow/LiveWindow.h>
+#include <frc/commands/Command.h>
+#include <frc/LiveWindow/LiveWindow.h>
 
 #include "Commands/AutonomousCommand.h"
 #include "OI.h"
@@ -19,7 +19,7 @@
 
 
 
-class Robot : public TimedRobot {
+class Robot : public IterativeRobot {
 public:
 	Command *autonomousCommand;
 	LiveWindow *lw = LiveWindow::GetInstance();

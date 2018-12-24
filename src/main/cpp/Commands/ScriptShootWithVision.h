@@ -1,7 +1,7 @@
 #pragma once
-#include "frc/WPIlib.h"
+#include <frc/WPILib.h>
 using namespace frc;
-#include <Commands/CommandGroup.h>
+#include <frc/commands/CommandGroup.h>
 
 class ScriptShootWithVision : public CommandGroup {
 public:

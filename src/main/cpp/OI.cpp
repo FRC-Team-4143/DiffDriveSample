@@ -1,7 +1,7 @@
-#include <Commands/BoilerLineup.h>
-#include <Commands/BoilerLineup.h>
 #include "OI.h"
-#include <SmartDashboard/SmartDashboard.h>
+#include <frc/SmartDashboard/SmartDashboard.h>
+#include "Commands/BoilerLineup.h"
+#include "Commands/BoilerLineup.h"
 #include "Commands/SetWheelOffsets.h"
 #include "Commands/ArcadeDriveMode.h"
 #include "Commands/AutonomousCommand.h"

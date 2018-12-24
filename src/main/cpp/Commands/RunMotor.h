@@ -1,7 +1,7 @@
 #pragma once
-#include "frc/WPIlib.h"
+#include <frc/WPILib.h>
 using namespace frc;
-#include <Commands/Command.h>
+#include <frc/commands/Command.h>
 #include <ctre/Phoenix.h>
 
 // ==========================================================================
