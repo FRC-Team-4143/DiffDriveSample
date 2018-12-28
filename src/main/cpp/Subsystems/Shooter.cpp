@@ -7,8 +7,8 @@
 //const int RPM = 7000;
 
 Shooter::Shooter() : Subsystem("Shooter") {
-   shooterMotor1 = RobotMap::shooterMotor1;
-   shooterMotor2 = RobotMap::shooterMotor2;
+   //shooterMotor1 = RobotMap::shooterMotor1;
+   //shooterMotor2 = RobotMap::shooterMotor2;
 
   // shooterMotor1->SetFeedbackDevice(WPI_TalonSRX::CtreMagEncoder_Relative);
    //shooterMotor2->SetFeedbackDevice(WPI_TalonSRX::CtreMagEncoder_Relative);

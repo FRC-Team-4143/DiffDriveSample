@@ -30,19 +30,19 @@ frc::AnalogInput*		RobotMap::rearRightSensor = nullptr;
 
 //frc::AnalogInput* RobotMap::sonar = nullptr;
 
-WPI_TalonSRX* RobotMap::climbingMotor = nullptr;
-WPI_TalonSRX* RobotMap::climbingMotor2 = nullptr;
+//WPI_TalonSRX* RobotMap::climbingMotor = nullptr;
+//WPI_TalonSRX* RobotMap::climbingMotor2 = nullptr;
 
 //SerialPort* RobotMap::serialPort = nullptr;
 //SerialPort* RobotMap::serialPort1 = nullptr;
 //SerialPort* RobotMap::serialPort2 = nullptr;
 
-WPI_TalonSRX* RobotMap::shooterMotor1;
-WPI_TalonSRX* RobotMap::shooterMotor2;
+//WPI_TalonSRX* RobotMap::shooterMotor1;
+//WPI_TalonSRX* RobotMap::shooterMotor2;
 
-WPI_TalonSRX* RobotMap::turretMotor;
-WPI_TalonSRX* RobotMap::indexMotor;
-WPI_TalonSRX* RobotMap::pickup;
+//WPI_TalonSRX* RobotMap::turretMotor;
+//WPI_TalonSRX* RobotMap::indexMotor;
+//WPI_TalonSRX* RobotMap::pickup;
 
 AHRS* RobotMap::imu = nullptr;
 
@@ -334,17 +334,17 @@ void RobotMap::Initialize() {
 	rearLeftSensor = new frc::AnalogInput(2);
 	rearRightSensor = new frc::AnalogInput(3);
 
-	climbingMotor = new WPI_TalonSRX(63); //13
-	climbingMotor2 = new WPI_TalonSRX(66); //9
+	//climbingMotor = new WPI_TalonSRX(63); //13
+	//climbingMotor2 = new WPI_TalonSRX(66); //9
 
 
-    shooterMotor1 = new WPI_TalonSRX(61); //11
-    shooterMotor2 = new WPI_TalonSRX(62); //12
+    //shooterMotor1 = new WPI_TalonSRX(61); //11
+    //shooterMotor2 = new WPI_TalonSRX(62); //12
 
-	pickup = new WPI_TalonSRX(60); //10
+	//pickup = new WPI_TalonSRX(60); //10
 
-	indexMotor = new WPI_TalonSRX(64); //14
+	//indexMotor = new WPI_TalonSRX(64); //14
 	
-	turretMotor = new WPI_TalonSRX(65); //Unused
+	//turretMotor = new WPI_TalonSRX(65); //Unused
 	
 }

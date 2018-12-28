@@ -67,6 +67,9 @@ void Robot::RobotInit() {
 }
 
 void Robot::RobotPeriodic() {
+	climber->stopClimb();
+	shooter->stopBack();
+	pickup->Stop();
 }
 
 void Robot::DisabledInit() {
@@ -129,7 +132,7 @@ void Robot::AutonomousInit() {
 	driveTrain->enableSteeringPID();
 	RobotMap::imu->ZeroYaw();
 
-	turret->startingPosition = RobotMap::turretMotor->GetSelectedSensorPosition();
+	//turret->startingPosition = RobotMap::turretMotor->GetSelectedSensorPosition();
 
 	//char mode = 3;
 	//RobotMap::serialPort->Write(&mode, 1);
@@ -196,6 +199,8 @@ void Robot::TeleopPeriodic() {
 	//indexer->ReadPDP();
 	//driveTrain->Dashboard();
 	SmartDashboard::PutNumber("Gyro Yaw", RobotMap::imu->GetYaw());
+
+    driveTrain->GetDiffSensorValues();
 
 	SmartDashboard::PutNumber("Front Left Sensor", driveTrain->flsensorval);
 	SmartDashboard::PutNumber("Front Right Sensor", driveTrain->frsensorval);

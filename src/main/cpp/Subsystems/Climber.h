@@ -5,8 +5,8 @@ using namespace frc;
 #include <ctre/Phoenix.h>
 
 class Climber : public Subsystem {
-	WPI_TalonSRX *climbingMotor;
-	WPI_TalonSRX *climbingMotor2;
+	//WPI_TalonSRX *climbingMotor;
+	//WPI_TalonSRX *climbingMotor2;
 
 
 private:

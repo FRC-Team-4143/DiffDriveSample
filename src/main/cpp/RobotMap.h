@@ -36,8 +36,8 @@ public:
 
 	//static AnalogInput* sonar;
 
-	static WPI_TalonSRX* climbingMotor;
-	static WPI_TalonSRX* climbingMotor2;
+	//static WPI_TalonSRX* climbingMotor;
+	//static WPI_TalonSRX* climbingMotor2;
 
 
 	static AHRS* imu;
@@ -46,12 +46,12 @@ public:
 	//static SerialPort* serialPort1;
 	//static SerialPort* serialPort2;
 
-    static WPI_TalonSRX* shooterMotor1;
-    static WPI_TalonSRX* shooterMotor2;
+    //static WPI_TalonSRX* shooterMotor1;
+    //static WPI_TalonSRX* shooterMotor2;
 
-	static WPI_TalonSRX* pickup;
-	static WPI_TalonSRX* indexMotor;
-	static WPI_TalonSRX* turretMotor;
+	//static WPI_TalonSRX* pickup;
+	//static WPI_TalonSRX* indexMotor;
+	//static WPI_TalonSRX* turretMotor;
 
 	static void Initialize();
 };

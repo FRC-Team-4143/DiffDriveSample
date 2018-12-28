@@ -5,7 +5,7 @@ using namespace frc;
 #include <ctre/Phoenix.h>
 
 class Pickup : public Subsystem {
-	WPI_TalonSRX *pickup;
+	//WPI_TalonSRX *pickup;
 
 private:
 

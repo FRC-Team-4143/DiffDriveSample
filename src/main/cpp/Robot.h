@@ -19,7 +19,7 @@
 
 
 
-class Robot : public IterativeRobot {
+class Robot : public TimedRobot {
 public:
 	Command *autonomousCommand;
 	LiveWindow *lw = LiveWindow::GetInstance();
@@ -38,6 +38,8 @@ public:
 
 	static Servo *servo;
 	static Servo *servo2;
+
+	static int timer;
 
 	virtual void RobotInit();
 	virtual void RobotPeriodic();

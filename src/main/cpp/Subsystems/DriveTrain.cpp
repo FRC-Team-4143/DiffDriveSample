@@ -148,10 +148,10 @@ void DriveTrain::SetOffsets(double FLOff, double FROff, double RLOff,
 
 
 void DriveTrain::PositionModeTwist(float desiredangle) {
-	frontLeftSteer->Set(ControlMode::Position, CorrectSteerSetpoint(FLOffset + 0.625, frontLeftSteer));
-	frontRightSteer->Set(ControlMode::Position, CorrectSteerSetpoint(FROffset - 0.625, frontRightSteer));
-	rearLeftSteer->Set(ControlMode::Position, CorrectSteerSetpoint(RLOffset - 0.625, rearLeftSteer));
-	rearRightSteer->Set(ControlMode::Position, CorrectSteerSetpoint(RROffset + 0.625, rearRightSteer));
+	//frontLeftSteer->Set(ControlMode::Position, CorrectSteerSetpoint(FLOffset + 0.625, frontLeftSteer));
+	//frontRightSteer->Set(ControlMode::Position, CorrectSteerSetpoint(FROffset - 0.625, frontRightSteer));
+	//rearLeftSteer->Set(ControlMode::Position, CorrectSteerSetpoint(RLOffset - 0.625, rearLeftSteer));
+	//rearRightSteer->Set(ControlMode::Position, CorrectSteerSetpoint(RROffset + 0.625, rearRightSteer));
 }
 
 // ==========================================================================
@@ -377,7 +377,7 @@ float DriveTrain::SetSteerSetpoint(float setpoint, WPI_TalonSRX* talon, double *
 			minI = i;
 		}
 	}
-	talon->Set(ControlMode::Position, angleOptions[minI]/EncoderConstants::FULL_TURN);
+	//talon->Set(ControlMode::Position, angleOptions[minI]/EncoderConstants::FULL_TURN);
 
 	// add back later RJS
 	//*inverse = cos((minMove / EncoderConstants::FULL_TURN) * 2 * 3.141);
@@ -604,14 +604,14 @@ void DriveTrain::LogSettings(double fl, double fr, double rl, double rr) {
 // ==========================================================================
 
 void DriveTrain::Dashboard() {
-	SmartDashboard::PutNumber("Steering Motor Encoder FL",
-			frontLeftSteer->GetSelectedSensorPosition());
-	SmartDashboard::PutNumber("Steering Motor Encoder FR",
-			frontRightSteer->GetSelectedSensorPosition());
-	SmartDashboard::PutNumber("Steering Motor Encoder RL",
-			rearLeftSteer->GetSelectedSensorPosition());
-	SmartDashboard::PutNumber("Steering Motor Encoder RR",
-			rearRightSteer->GetSelectedSensorPosition());
+	//SmartDashboard::PutNumber("Steering Motor Encoder FL",
+	//		frontLeftSteer->GetSelectedSensorPosition());
+	//SmartDashboard::PutNumber("Steering Motor Encoder FR",
+	//		frontRightSteer->GetSelectedSensorPosition());
+	//SmartDashboard::PutNumber("Steering Motor Encoder RL",
+	//		rearLeftSteer->GetSelectedSensorPosition());
+	//SmartDashboard::PutNumber("Steering Motor Encoder RR",
+	//		rearRightSteer->GetSelectedSensorPosition());
 
 	return;
 	
@@ -636,10 +636,10 @@ void DriveTrain::CrabInit() {
 // ==========================================================================
 
 void DriveTrain::SetWheelsStraight() {
-	frontLeftSteer->Set(ControlMode::Position, FLOffset);
-	frontRightSteer->Set(ControlMode::Position, FROffset);
-	rearLeftSteer->Set(ControlMode::Position, RLOffset);
-	rearRightSteer->Set(ControlMode::Position, RROffset);
+	//frontLeftSteer->Set(ControlMode::Position, FLOffset);
+	//frontRightSteer->Set(ControlMode::Position, FROffset);
+	//rearLeftSteer->Set(ControlMode::Position, RLOffset);
+	//rearRightSteer->Set(ControlMode::Position, RROffset);
 }
 
 // ==========================================================================

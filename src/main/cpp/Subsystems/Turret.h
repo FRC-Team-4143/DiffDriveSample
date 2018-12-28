@@ -7,7 +7,7 @@ using namespace frc;
 class Turret : public Subsystem {
 private:
 	//WPI_TalonSRX *indexMotor;
-	WPI_TalonSRX *turretMotor;
+	//WPI_TalonSRX *turretMotor;
 
 public:
 	Turret();

@@ -8,8 +8,8 @@ class Shooter: public Subsystem {
 public:
 	float targetShooterSpeed;
 
-	WPI_TalonSRX *shooterMotor1;
-	WPI_TalonSRX *shooterMotor2;
+	//WPI_TalonSRX *shooterMotor1;
+	//WPI_TalonSRX *shooterMotor2;
 
 	Shooter();
 	void InitDefaultCommand();

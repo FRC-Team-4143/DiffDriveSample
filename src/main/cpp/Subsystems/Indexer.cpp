@@ -4,8 +4,8 @@
 #include "../Commands/DefaultIndexer.h"
 
 Indexer::Indexer() : Subsystem("Indexer") {
-	indexMotor = RobotMap::indexMotor;
-	pdp = RobotMap::pdp;
+	//indexMotor = RobotMap::indexMotor;
+	//pdp = RobotMap::pdp;
 	timer = new Timer();
 	timer->Start();
 
@@ -37,10 +37,10 @@ void Indexer::InitDefaultCommand() {
 
 void Indexer::SpinCW() {
 	SmartDashboard::PutBoolean("Indexer Jammed", indexJammed);
-	ReadPDP();
+	//ReadPDP();
 
 	if (indexJammed) {
-		indexMotor->Set(ControlMode::PercentOutput, 0.5);
+		//indexMotor->Set(ControlMode::PercentOutput, 0.5);
 		if (timer->Get() > reverseTime) {
 			indexJammed = false;
 			Robot::oi->GetDriverJoystick2()->SetRumble(Joystick::kLeftRumble, 0);
@@ -48,7 +48,7 @@ void Indexer::SpinCW() {
 			reverseTime = 0;
 		}
 	} else {
-		indexMotor->Set(ControlMode::PercentOutput,-SmartDashboard::GetNumber("Indexer Speed", 0.65));
+		//indexMotor->Set(ControlMode::PercentOutput,-SmartDashboard::GetNumber("Indexer Speed", 0.65));
 		if (IsJammed()) {
 			//RobotMap::i2c->Write(13, 0);
 			Robot::oi->GetDriverJoystick2()->SetRumble(Joystick::kLeftRumble, 1);
@@ -63,7 +63,7 @@ void Indexer::SpinCW() {
 void Indexer::SpinCCW() {
 	SmartDashboard::PutBoolean("Indexer Jammed", indexJammed);
 	if (indexJammed) {
-		indexMotor->Set(ControlMode::PercentOutput,-0.5);
+		//indexMotor->Set(ControlMode::PercentOutput,-0.5);
 		if (timer->Get() > reverseTime) {
 			indexJammed = false;
 			Robot::oi->GetDriverJoystick2()->SetRumble(Joystick::kLeftRumble, 0);
@@ -72,7 +72,7 @@ void Indexer::SpinCCW() {
 		}
 	}
 	else {
-		indexMotor->Set(ControlMode::PercentOutput,SmartDashboard::GetNumber("Indexer Speed", 0.65));
+		//indexMotor->Set(ControlMode::PercentOutput,SmartDashboard::GetNumber("Indexer Speed", 0.65));
 		if (IsJammed()) {
 			//RobotMap::i2c->Write(13, 0);
 			Robot::oi->GetDriverJoystick2()->SetRumble(Joystick::kLeftRumble, 1);
@@ -87,7 +87,7 @@ void Indexer::SpinCCW() {
 //USED FOR AUTONOMOUS//
 void Indexer::SpinCW(float speed){
 	if (indexJammed){
-		indexMotor->Set(ControlMode::PercentOutput,0.5);
+		//indexMotor->Set(ControlMode::PercentOutput,0.5);
 		if (timer->Get() > reverseTime){
 			indexJammed = false;
 			Robot::oi->GetDriverJoystick2()->SetRumble(Joystick::kLeftRumble, 0);
@@ -95,7 +95,7 @@ void Indexer::SpinCW(float speed){
 		}
 
 	} else {
-		indexMotor->Set(ControlMode::PercentOutput,-speed);
+		//indexMotor->Set(ControlMode::PercentOutput,-speed);
 		if (IsJammed()) {
 			//RobotMap::i2c->Write(13, 0);
 			Robot::oi->GetDriverJoystick2()->SetRumble(Joystick::kLeftRumble, 1);
@@ -110,8 +110,8 @@ void Indexer::SpinCW(float speed){
 //////////////////////
 
 void Indexer::SpinBall() {
-	indexMotor->Set(ControlMode::Position,0.0);
-	indexMotor->Set(ControlMode::Position, -1.0);
+	//indexMotor->Set(ControlMode::Position,0.0);
+	//indexMotor->Set(ControlMode::Position, -1.0);
 }
 
 void Indexer::SetLoadingOne(bool loadingOne) {
@@ -119,7 +119,7 @@ void Indexer::SetLoadingOne(bool loadingOne) {
 }
 
 void Indexer::Stop() {
-	indexMotor->Set(ControlMode::PercentOutput,0);
+	//indexMotor->Set(ControlMode::PercentOutput,0);
 	//RobotMap::i2c->Write(6, 0);
 }
 
@@ -148,7 +148,7 @@ void Indexer::ReadPDP() {
 void Indexer::SetSpeed(double speed) {
 	if (!Robot::oi->GetButton6() && !Robot::oi->GetButton10() && !_loadingOne) {
 		//indexMotor->SetControlMode(WPI_TalonSRX::kSpeed);
-		indexMotor->Set(ControlMode::PercentOutput,speed);
+		//indexMotor->Set(ControlMode::PercentOutput,speed);
 	}
 }
 
@@ -157,7 +157,7 @@ void Indexer::ZeroTimer() {
 }
 
 double Indexer::GetPosition() const {
-	return indexMotor->GetSelectedSensorPosition();
+	return 0 ; //indexMotor->GetSelectedSensorPosition();
 }
 
 double Indexer::GetReverseTime() const {

@@ -2,7 +2,7 @@
 #include "RobotMap.h"
 
 Pickup::Pickup() : Subsystem("Pickup") {
-	pickup = RobotMap::pickup;
+	//pickup = RobotMap::pickup;
 }
 
 void Pickup::InitDefaultCommand() {
@@ -11,13 +11,13 @@ void Pickup::InitDefaultCommand() {
 }
 
 void Pickup::In() {
-	pickup->Set(ControlMode::PercentOutput, 0.25);
+	//pickup->Set(ControlMode::PercentOutput, 0.25);
 }
 
 void Pickup::Out() {
-	pickup->Set(ControlMode::PercentOutput, -0.25);
+	//pickup->Set(ControlMode::PercentOutput, -0.25);
 }
 
 void Pickup::Stop() {
-	pickup->Set(0);
+	//pickup->Set(0);
 }
